@@ -12,7 +12,11 @@
         String Sub=request.getParameter("Subject");
         String DOW=request.getParameter("RDay");
         int Sem=Integer.parseInt(request.getParameter("Rsemester"));
+<<<<<<< HEAD
        // Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/attendance?useSSL=false","root","");
+=======
+        int TId=(Integer)session.getAttribute("TId");
+>>>>>>> upstream/main
         String sql="insert into subject( SubId,Subject,DayOfWeek,TId,Sem) values(?,?,?,?,?)";
             PreparedStatement ps=conn.prepareStatement(sql);
             String sql1="select max(SubId) as max from subject";
@@ -23,7 +27,6 @@
             {
                 Newid=newid.getInt(1)+1;
             }
-            //System.out.println(Newid+" new id");
             ps.setInt(1,Newid);
             ps.setString(2,Sub);
             ps.setString(3,DOW);
@@ -32,22 +35,29 @@
             int r=ps.executeUpdate();
             if(r>0)
             {
-                message="Subject Added Successfully";
+                message="Subject has been added successfully!";
             }
             else{
-                message="Subject not added Successfully";
+                message="Failed to add subject";
             }
         
    }
         
  %>
-
-    <h1>Welcome TeacherName</h1>
-    <div class="card">
+ 
+    <head>
+        <title>Add Subject</title>
+        <link rel="stylesheet" href="css/style.css"/>
+    </head>
+ <body>
+     <br>
+     <br>
+     <h1 style="text-align: center;">Welcome, You can add a new subject here!</h1>
+    
         <form action="Addsubject.jsp">
-            <h2>Add your Subject</h2>
-            Subject Name:<input type="text" name="Subject"></br></br>
-            DayOfWeek:<select name="RDay">
+            <table align="center" class="addsub">
+                <tr><td> Subject Name</td><td><input type="text" name="Subject"></td></tr>
+            <tr><td>Select Day Of Week</td><td><select name="RDay">
                 <option>Select Day</option>
                 <option value="Monday">Monday</option>
                 <option value="Tuesday">Tuesday</option>
@@ -56,21 +66,24 @@
                 <option value="Friday">Friday</option>
                 <option value="Saturday">Saturday</option>
                 <option value="Sunday">Sunday</option>
-            </select></br></br>
-            SEM:<select name="Rsemester">
+            </select></td></tr>
+            <tr><td>Select Semester</td><td><select name="Rsemester">
                 <option>Select Sem</option>
-                <option value="1">Sem 1</option>
-                <option value="2">Sem 2</option>
-                <option value="3">Sem 3</option>
-                <option value="4">Sem 4</option>
-                <option value="5">Sem 5</option>
-                <option value="6">Sem 6</option>
-            </select></br></br>
-            <input type="submit" value="SUBMIT" name="submit"></br></br>
-            <% if(!message.equals("")){ %>
-            <div class="massage"><p><%= message%></p></div>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                    </select></td></tr>
+            <tr><td colspan='2'></td></tr>
+        <tr><td colspan="2" style="text-align: center;"><input type="submit" value="SUBMIT" name="submit" style="background:white;"></td></tr>
+        </table>
+            <br>
+        <% if(!message.equals("")){ %>
+            <div style="padding: 5px;display:inline-block ;position:relative ;left:40%;font-size:16px; font-weight:bold;background-color:black;color:#e16389; height:50px;"><p><%= message%></p></div>
+            
           <%  }  %>
         </form>
-    </div>
+ </body>
     
- <%@ include file="footer.jsp" %>

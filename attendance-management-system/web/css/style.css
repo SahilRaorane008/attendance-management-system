@@ -9,37 +9,166 @@ and open the template in the editor.
 */
 
 .logo{
-    float: left;
-    color: whitesmoke;
-    margin-left: 20px;
-    margin-top: 20px;
-    text-decoration: none;
+    
+    margin-top: 10px;
     font-size: 18px;
+    font-weight: bold;
 }
 
 .navItem ul li{
-    padding: 10px 10px 10px 30px;
+    
     list-style: none;
-    display: inline-block;
-    padding-right: 40px;
         
 }
 .navItem ul li a{
     text-decoration: none;
     font-size: 18px;
     color: white;
+
 }
 .navItem ul{
     float: right;
 }
 .navItem{
-    height: 50px;
+    height: 60px;
     background-color: black;
     color: white;
 }
-
-.tables table{ 
-width: 100%;
+body{
+    background-color: #C0C0C0;
+font-weight:bold; 
+font-size: 16px; 
+}
+.editpage{
+    width: 85%;
+     background-color: #b76e79;
+}
+input [type="text"]{
+    font-size:16px; 
+    font-weight:bold;
+}
+input [type="submit"]{
+    font-size:16px;
+    font-weight: bold; 
+    width:20em;
+}
+.updateteacherprofile{
+width: 30%;
+background-color: #32a852;
+font-weight: bold;
+font-size: 16px;
+border-radius: 25px;
+padding: 20px;
+    
+}
+select{
+    width:100%;
+ font-weight: bold;
+font-size: 16px;  
+   
+}
+.addsub{    
+width: 40%;
+background-color: #e16389;
+font-weight: bold;
+font-size: 16px;  
+ 
+}
+.editsub{
+width: 40%;
+background-color: #e16389;
+font-weight: bold;
+font-size: 16px;  
+    
+}
+.updatestudentprofile{
+width: 30%;
+background-color: #a88932;
+font-weight: bold;
+font-size: 16px;
+border-radius: 25px;
+padding: 20px;
+    
+}
+table tr td{
+  font-weight: bold;
+font-size: 16px;   
+}
+.studentheader{
+    font-size: 16px;
+    font-weight: bold;
+    font-family:Futura Condensed Extra Bold;
+    color: #183C28;
+}
+.viewtable table{
+  width: 85%;
 text-align: center;
-color:red;
+background-color: #072f5f;
+font-weight: bold;
+font-size: 16px;  
+color: white;
+    
+}
+.tables table{ 
+width: 85%;
+text-align: center;
+background-color: #E18A07;
+font-weight: bold;
+font-size: 16px;
+}
+.teacherdashboard{
+width: 40%;
+background-color: #820d38;
+font-weight: bold;
+font-size: 16px;
+color: white;
+   border-radius: 25px;
+  padding: 20px;
+
+}
+.teacherRegister{
+   width: 40%;
+   border-radius: 25px;
+  padding: 20px;
+  background-color:#3d1422 ;
+  font-weight: bold;
+    font-size: 16px;
+color: white;
+
+    
+}
+.studenttable table{
+   width: 85%;
+text-align: center;
+background-color: #183C28;
+color: white;
+font-weight: bold;
+font-size: 16px; 
+    
+}
+
+.studentRegister{
+     width: 40%;
+background-color: #a11212;
+font-weight: bold;
+font-size: 16px;
+color: white;
+border-radius: 25px;
+  padding: 20px;
+}
+
+.studentLogin{
+    width: 40%;
+background-color: #4a0101;
+font-weight: bold;
+font-size: 16px;
+color: white;
+border-radius: 25px;
+  padding: 20px;
+}
+.searchbutton{
+background-image: url('css/search.jpg');
+background-repeat: no-repeat;
+background-position: left;
+padding-left: 5px;
 }

@@ -9,12 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title></title>
     </head>
     <body>
         <%
         
-            session.setAttribute("isTeacherLogin", false);
+            session.setAttribute("isTeacherLogin", null);
             response.sendRedirect("teacher.html");
         %>
     </body>

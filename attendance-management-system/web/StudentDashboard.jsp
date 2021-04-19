@@ -6,21 +6,36 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%@ include file="studentheader.jsp" %>
+<%
+        PreparedStatement studentvars=conn.prepareStatement("select * from student where sid=?");
+    studentvars.setInt(1,sid);
+    ResultSet studentresult=studentvars.executeQuery();
+    String Studentname="";
+    String Studentrollno="";
+    String Studentph="";
+    int Studentsem=0;
+    if(studentresult.next()){
+        Studentname=studentresult.getString("Sname");
+        Studentrollno=studentresult.getString("RollNo");
+        Studentph=studentresult.getString("Scontact");
+        Studentsem=studentresult.getInt("Sem");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Student Dashboard</title>
     </head>
+      <h1 style="background-color: #cade52 ; text-align:center;">Mark your attendance for the day!</h1>
+    
+    <p class="studentheader" align="center">Student Name: <%=Studentname%> &emsp;&emsp;&emsp; Roll No: <%=Studentrollno%> &emsp;&emsp;&emsp; Contact Number: <%=Studentph%>&emsp;&emsp;&emsp;Semester: <%=Studentsem%> &emsp;&emsp;&emsp; Today's Date: <%= (new java.util.Date()).toLocaleString()%> &emsp;&emsp;&emsp; Today is: <%=Dow%></p>
 
-    <div>Today's date: <%= (new java.util.Date()).toLocaleString()%></div>
 
 
     <%
-        //default will change later
-        int sid = 101;
+        
 
         //find sem through sid
         PreparedStatement semps = conn.prepareStatement("Select sem from student where SId=?  ");
@@ -85,19 +100,18 @@
 
     <br>
 
-    <div>sem<%=sem%></div>
-    <br>
-    <div>Today is <%=Dow%></div>
-    <h1>Subject wise attendance</h1>
-    <div class="tables">
+        
+   
+ 
+    <div class="studenttable" align="center">
         <table border="1">
-            <tr>
+            <tr style="background-color: #cade52; color: black; font-size: 20px;">
                 <!--<th>Id</th>-->
                 <th>Subject</th>
                 <th>DayOfWeek</th>
                 <th>Sem</th>
                 <th>Mark</th>
-                <th>Attended Lectures</th>
+                <th>Lectures Attended</th>
                 <th>Total Lectures</th>
             </tr>
             <%
@@ -118,11 +132,17 @@
                     total=pm.executeQuery();
                     if(total.next())
                         {attended=total.getInt(1);}
-                    float percent=(attended/tot)*100;
+                    float percent=0;
+                    if(tot!=0)
+                    percent=(attended/tot)*100;                    
             %>
+<<<<<<< HEAD
             <div><%=attended%></div>
             <tr>
              <!--   <td><%=Subjectid%></td>-->
+=======
+           <tr>
+>>>>>>> upstream/main
                 <td><%=subject%></td>
                 <td><%=Dow%></td>
                 <td><%=sem%></td>
@@ -141,5 +161,5 @@
 
         </table>    
     </div>
-
+</body>
 </html>

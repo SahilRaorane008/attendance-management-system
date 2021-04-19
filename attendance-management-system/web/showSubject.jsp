@@ -7,11 +7,11 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@ include file="header.jsp" %>
-
-<div class="tables">
+<title>Show Subject</title>
+<div class="tables" align="center">
     <table border="1">
         <tr>
-            <th>S.No</th>
+            <th>Sr.No</th>
             <th>Subject</th>
             <th>DayOfWeek</th>
             <th>Sem</th>
@@ -19,9 +19,11 @@
             <th>Edit</th>
             <th>View</th>
         </tr>
-        <% 
-            PreparedStatement ps=conn.prepareStatement("Select * from subject where TId=?");
-            ps.setInt(1,202);
+        <%
+            PreparedStatement ps= conn.prepareStatement("Select * from subject where TId=?");
+            
+            int TId=(Integer)session.getAttribute("TId"); 
+            ps.setInt(1,TId); 
             ResultSet r=ps.executeQuery();
             int sid;
             String Subject="";
@@ -34,7 +36,6 @@
                DOW=r.getString("DayOfWeek");
                Sem=r.getInt("Sem");
                Sno=Sno+1;
-               out.print(sid);
         %>
         <tr>
             <td><%=Sno%></td>
@@ -43,11 +44,10 @@
             <td><%=Sem%></td>
             <td><a href="update.jsp?q=delete&sid=<%=sid%>">Delete</a></td>
             <td><a href="EditSubject2.jsp?sid=<%=sid%>">Edit</a></td>
-            <td><a href="update.jsp?sid=<%=sid%>&Subject=<%=Subject%>&DOW=<%=DOW%>&Sem=<%=Sem%>">View</a></td>
+            <td><a href="view.jsp?btn_search=search&txt_search=<%=Subject%>&search=subject">View</a></td>
         </tr>
         <% } %> 
     </table>
 </div>
-<%@ include file="footer.jsp" %>
 
 
